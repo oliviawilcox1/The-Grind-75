@@ -26,5 +26,43 @@
 // -109 <= target <= 109
 // Only one valid answer exists.
 
-// var twoSum = function(nums, target) {
-// }
+
+// First Way to Solve
+var twoSum = function(nums, target) {
+    if(!nums || nums.length < 1) {
+        return [];
+    }
+    const map = new Map();
+    
+    for(let i = 0; i < nums.length; i++) {
+        const remaining = target - nums[i];
+        if(map.has(remaining)) {
+            return [ map.get(remaining), i];
+        }
+        
+        map.set(nums[i] , i);
+    }
+    
+    return [];
+};
+console.log(twoSum([2,7,11,15],9))
+
+// Second Way
+var twoSum = function(nums, target) {
+
+    if(!nums || nums.length < 1) {
+        return [];
+    }
+  let map = {}
+  for(let i =0; i < nums.length; i++){
+    let difference = target - nums[i]
+    
+    if(map[difference] !== undefined) {
+      return [map[difference], i]
+    } else {
+      map[nums[i]]= i
+   }
+  }
+};
+
+console.log(twoSum([2,7,11,15],9))
