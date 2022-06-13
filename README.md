@@ -7,3 +7,4 @@ Every day I will be solving two LeetCode questions to sharpen my skills and chal
 ##### List of Problems Solved:
 1. Two Sum
 2. Valid Parentheses
+3. Merge Two Sorted Lists
