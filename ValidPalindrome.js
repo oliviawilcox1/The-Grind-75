@@ -21,3 +21,15 @@ var isPalindrome = function(s) {
    return joinedReverseWord===word ? true : false;
   };
   console.log(isPalindrome("Hello there:"))
+
+//   Concatenating 
+var isPalindrome = function(s) {
+    let word = s.toLowerCase().replace(/[^a-z]/gi, '');
+    let newWord = ""
+    
+    for (let i = word.length-1; i >= 0; i--) {
+      newWord = newWord + word[i]
+    }
+    return newWord===word ? true : false;
+  };
+  console.log(isPalindrome("Hello there:"))
