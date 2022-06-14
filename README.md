@@ -8,3 +8,6 @@ Every day I will be solving two LeetCode questions to sharpen my skills and chal
 1. Two Sum
 2. Valid Parentheses
 3. Merge Two Sorted Lists
+4. Best Time To Buy Stocks
+5. Valid Palindrome
+6. Valid Anagram
