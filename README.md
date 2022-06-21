@@ -11,3 +11,5 @@ Every day I will be solving two LeetCode questions to sharpen my skills and chal
 4. Best Time To Buy Stocks
 5. Valid Palindrome
 6. Valid Anagram
+7. Longest Substring Without Repeating Characters
+
