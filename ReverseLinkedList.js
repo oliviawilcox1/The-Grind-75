@@ -40,3 +40,38 @@ var reverseList = function(head) {
     return prev;
 }
 
+
+
+
+// From geeks for geeks
+var head;
+ 
+     class Node {
+        constructor(val) {
+            this.val = val;
+            this.next = null;
+        }
+    }
+ 
+    /* Function to reverse the linked list */
+    function reverse(node) {
+    var prev = null;
+    var current = node;
+    var next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        node = prev;
+        return node;
+    }
+ 
+    // prints content of double linked list
+    function printList(node) {
+        while (node != null) {
+            document.write(node.val + " ");
+            node = node.next;
+        }
+    }
