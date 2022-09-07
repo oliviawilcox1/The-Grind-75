@@ -40,3 +40,33 @@ var longestPalindrome = function(s) {
  return (odd) ? length + 1 : length
      
  }
+
+
+// Another Solution
+ var longestPalindrome = function(s) {
+    
+    const characters = new Map();
+     
+     for (let i = 0; i < s.length; i++) {
+         const char = s[i];
+ 
+         if (characters.has(char)) {
+             characters.set(char, characters.get(char) + 1);
+         } else {
+             characters.set(char, 1);
+         }
+     }
+    let odd = 0;
+    let result = 0;
+     
+     for (const value of characters.values()) {
+         result += value - value % 2;
+         
+         if (odd === 0 && value % 2 === 1) {
+             odd = 1;
+         }
+     }
+     
+     return result + odd;
+     
+ }
