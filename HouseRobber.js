@@ -29,3 +29,22 @@ var rob = function(nums) {
     }
     return Math.max(even, odd) 
 };
+
+//Another Way to solv
+var rob = function(nums) {
+
+    let previous = 0;
+    let current = 0;
+    let temp; 
+    for (let num of nums) {
+        temp = current; 
+
+ 
+        current = Math.max(num+previous, current);
+
+        previous = temp;
+
+    }
+    return current;
+
+};
