@@ -27,3 +27,23 @@ var preorder = function(root) {
     if(root === null) return [];
     return preOrder(root, []);
 };
+
+// Another clearer way to solve the problem
+var preorder = function(root) {
+    let result = [];
+  
+    function helper(root) {
+      if (!root) return result;
+       console.log("root is ", root.val, root.children)
+      result.push(root.val);
+        
+      root.children?.forEach((el) => helper(el));
+      
+      return result;
+    }
+    return helper(root);
+  };
+  
+  
+  
+  
