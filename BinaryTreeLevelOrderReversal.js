@@ -35,4 +35,30 @@ var levelOrder = function(root) {
 }
 
 
+// Another Solution
 
+var levelOrder = function(root) {
+    if(root === null) return [];
+    
+    let queue = [root];
+    let res = [];
+    
+    while(queue.length > 0) {
+        let len = queue.length;
+        console.log(len)
+        console.log(queue)
+        let cur = [];
+        let newQueue = [];
+        for(let i = 0 ; i < len; i++){
+            cur.push(queue[i].val);
+            if(queue[i].left) newQueue.push(queue[i].left);
+            if(queue[i].right) newQueue.push(queue[i].right);
+        }
+        res.push(cur);
+        console.log("old",queue)
+        queue = newQueue;
+        console.log("new", queue)
+    }
+    return res;
+};
+ 
