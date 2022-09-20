@@ -35,3 +35,43 @@ var removeNthFromEnd = function(head, n) {
      return arrToList(newArr)
  
  };
+
+ //Another Way to solve it 
+ var removeNthFromEnd = function(head, n) {
+    let root = head;
+    let clone = head;
+    let len = 0;
+   
+
+    while (clone) {
+      len++;
+      clone = clone.next;
+    }
+
+    
+    let count = len - n;
+    if (count === 0) return head.next;
+    while (root && count > 1) {
+      root = root.next;
+      count--;
+    }
+  
+
+    root.next = root.next && root.next.next;
+    return head;
+  };
+
+  //solved using recursion
+  var removeNthFromEnd = function(head, n) {
+    const help = (root, count) => {
+        
+      if (root.next) count = help(root.next, count);
+      
+      if (count === n) root.next = root.next.next;
+        console.log(count, root)
+      return ++count;
+       
+    }
+    const count = help(head, 0);
+    return count === n ? head.next : head;
+  };
