@@ -46,3 +46,28 @@ var middleNode = function(head) {
     }
     return slow
 };
+
+
+// Another Way
+var middleNode = function(head) {
+    let count = 1
+    let hi = head
+    if(head.next === null) return head
+    
+    while(hi.next){
+        hi = hi.next
+        count++
+    }
+  
+    let middle = parseInt(count / 2);
+  
+    let counter = 1
+    while(counter < middle){
+        head = head.next
+        counter++
+      
+    }  
+      return  head.next
+  };
+  
+  
