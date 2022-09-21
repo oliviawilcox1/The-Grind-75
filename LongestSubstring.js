@@ -28,10 +28,9 @@ var lengthOfLongestSubstring = function(s) {
     for (let i = 0; i < s.length; i++) {
         if (string.includes(s[i])) {
             string = string.slice(string.indexOf(s[i]) + 1)  // we remove the repeated character from the front.
-          console.log(string)
         }
         string += s[i]  // add each letter to our string to evaluate in the nexter iteration.
-        console.log(string)
+
         if (string.length > longest) {
             longest = string.length    // we now update our longest substring
         }
