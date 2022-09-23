@@ -75,3 +75,21 @@ var head;
             node = node.next;
         }
     }
+
+
+//Average time complexity and good space 
+var reverseList = function(head) {
+    let newArr = []
+    while(head){
+        newArr.push(head.val)
+        head = head.next
+    }
+   
+    newArr.reverse()
+
+    
+    const arrToList = (arr) => arr.reduceRight((last, val)=> last = last === null ? new ListNode(val) : new ListNode(val, last),null)
+
+
+    return arrToList(newArr)
+}

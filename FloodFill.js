@@ -20,3 +20,34 @@
 // Input: image = [[0,0,0],[0,0,0]], sr = 0, sc = 0, color = 0
 // Output: [[0,0,0],[0,0,0]]
 // Explanation: The starting pixel is already colored 0, so no changes are made to the image.
+
+
+
+var floodFill = function(image, sr, sc, color) {
+    const queue = [[sr, sc]];
+    const rowDir = [-1, 0, 1, 0];
+    const colDir = [0, 1, 0, -1];
+
+    while(queue.length > 0) {
+        const curr = queue.pop();
+        const currRow = curr[0];
+        const currCol = curr[1];
+        for (let i = 0; i < 4; i++) {
+            const newRow = currRow + rowDir[i];
+            const newCol = currCol + colDir[i];
+            if(
+                newRow < image.length
+                && newRow >= 0
+                && newCol < image[0].length
+                && newCol >= 0
+                && image[newRow][newCol] !== color
+                && image[newRow][newCol] === image[currRow][currCol]
+            ) {
+                queue.unshift([newRow, newCol]);
+            }
+        }
+        image[currRow][currCol] = color
+    }
+    
+    return image;
+};
