@@ -66,3 +66,21 @@ var twoSum = function(nums, target) {
 };
 
 console.log(twoSum([2,7,11,15],9))
+
+
+
+var twoSum = (nums, target) => {
+  let map = new Map()
+  for (let index = 0; index < nums.length; index++) {/* Time O(N) */
+      const num = nums[index];
+      const complement = (target - num);
+      const sumIndex = map.get(complement);
+
+      const isTarget = map.has(complement)
+      if (isTarget) return [ index, sumIndex ];
+
+      map.set(num, index);                                /* Space O(N) */
+  }
+
+  return [ -1, -1 ];
+}
