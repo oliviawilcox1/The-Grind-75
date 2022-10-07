@@ -21,12 +21,18 @@
 const groupAnagrams = function(strs) {
     let groups = {}
     strs.forEach(str => {
+        
         const sortedStr = str.split('').sort().join('')
+//         Assigning the keys as the sorted strings
+//         and if it exists pushing it 
         if (groups[sortedStr]) {
             groups[sortedStr].push(str)
         } else {
+//             Else create it
             groups[sortedStr] = [str]
         }
+        
     })
+    
     return Object.values(groups)
 };
