@@ -60,4 +60,21 @@ const invertTree = (root) => {
         return root
     };
     
-    
+    // BEST WAY
+    var invertTree = function(root) {    
+        const invert = (node) => {
+            
+            if(!node) return node
+            
+            let left = node.left
+            let right = node.right
+            node.left = right
+            node.right = left
+            
+            invert(node.left)
+            invert(node.right)
+            
+        }
+        invert(root)
+        return root
+    }
