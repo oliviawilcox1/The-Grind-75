@@ -30,13 +30,21 @@ var maxDepth = function(root) {
         return result
     };
 // Another Option
-    var maxDepth = function(root) {
-        //     We know its a DFS Search and therefore it will be recursive 
-            
-            if (!root) return 0
-            
-            let left = maxDepth(root.left) + 1
-            let right = maxDepth(root.right) + 1
-            return Math.max(left,right)
-            
-        };
+var maxDepth = function(root) {
+    //     We know its a DFS Search and therefore it will be recursive 
+        
+        if (!root) return 0
+        
+        let left = maxDepth(root.left) + 1
+        let right = maxDepth(root.right) + 1
+        return Math.max(left,right)
+        
+    };
+
+// More Succinct
+var maxDepth = function(root) {
+//     We know its a DFS Search and therefore it will be recursive 
+    if (!root) return 0
+    return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    
+};

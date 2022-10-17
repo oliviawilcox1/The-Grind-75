@@ -20,13 +20,14 @@
 // so we set a variable to true if we have already visited it
 // and then every loop we check if its true meaning we have visited it
 //  which means there is a cycle
-var detectCycle = function(head) {
-    let curr = head;
+var hasCycle = function(head) {
     
-    while(curr != null){
-        if(curr.visited) return curr
+    let curr = head
+    
+    while(curr){
+        if(curr.visited === true) return curr
         curr.visited = true
-        curr = curr.next 
+        curr = curr.next
     }
-    return null
+    return false
 };
