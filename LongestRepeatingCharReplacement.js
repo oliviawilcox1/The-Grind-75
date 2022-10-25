@@ -39,3 +39,38 @@ var characterReplacement = function(s, k) {
     }
      return max
 };
+
+// Great Time Complexity
+
+var characterReplacement = function (s, k) {
+    // Num of times the maximum occurring char appears
+    let maxCharCount = 0, left = 0, right = 0;
+      
+  //   Initialize the dictionary
+    const dict = {};
+      
+    while (right < s.length) {
+        
+  //  Get the character
+      const char = s[right]; 
+        
+  //  Ternary Operator to Update the Dictionary
+  //  If the character exists add to the value otherwise set it to 1 
+      dict[char] ? dict[char]++ : (dict[char] = 1); 
+        
+  //  Update the maximum occuring char count    
+      maxCharCount = Math.max(dict[char], maxCharCount); 
+  
+  //  Check to see if our k-changes constraint is maintained
+      if (right - left + 1 - maxCharCount > k) {
+        // Shorten the left
+        dict[s[left]]--;
+        left++;  
+      }
+        
+     // Expand the right 
+      right++; 
+    }
+    // Return the window size
+    return right - left; 
+  };
