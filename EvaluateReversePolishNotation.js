@@ -29,3 +29,23 @@
 // = (0 + 17) + 5
 // = 17 + 5
 // = 22
+
+function evalRPN(tokens) {
+    const stack = [];
+    
+      for(let i=0; i< tokens.length; i++){
+          let token = tokens[i]
+          if(token === "+"){
+              stack.push(stack.pop()+stack.pop())
+          } else if (token === "-") {
+              stack.push(-stack.pop()+stack.pop())
+          } else if (token === "*") {
+              stack.push(stack.pop()*stack.pop())
+          } else if (token === "/") {
+               stack.push(Math.trunc(1/stack.pop()*stack.pop()))
+          } else{
+              stack.push(parseInt(token))
+          }
+      }
+    return stack[0];
+  }
