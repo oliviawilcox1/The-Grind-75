@@ -30,3 +30,17 @@ var generateParenthesis = function(n) {
     dfs("", 0, 0)
     return result
 };
+
+var generateParenthesis = function(n) {
+    const current = [];
+    const gen = (left, right, _string) => {
+      if (left === n && right === n) {
+        current.push(_string);
+        return;
+      }
+      if (left < n) gen(left + 1, right, _string.concat("("));
+      if (left > right && right < n) gen(left, right + 1, _string.concat(")"));
+    }
+    gen(0, 0, '');
+    return current;
+  };
