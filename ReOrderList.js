@@ -40,3 +40,47 @@ function reorderList(head) {
         newArr[r].next = newArr[i + 1]
     }
 }
+
+
+// Solved with using a linkedlist by finding the middle, then reversing the second
+// half and combing the sorted list 
+
+var reorderList = function(head) {
+    // find middle
+	// by moving "fast" twice, we'll have "slow" in the middle
+    let slow = head
+    let fast = head
+    while (fast.next && fast.next.next) {
+        slow = slow.next
+        fast = fast.next.next
+    }
+
+    // reverse second half
+	// with reverse linked list solution
+    let prev = null
+    let cur = slow.next
+    while (cur) {
+        let temp = cur.next
+        cur.next = prev
+        prev = cur
+        cur = temp
+    }
+
+    slow.next = null
+
+    // combine two halves
+    let h1 = head
+    let h2 = prev
+
+    // if even, second half will be smaller
+	while (h2) {
+        let temp = h1.next
+        console.log(temp)
+        h1.next = h2
+        console.log("h1.next", h2)
+        h1 = h2
+        console.log("h1", h1)
+        h2 = temp
+        console.log("h2", h2)
+    }
+};
