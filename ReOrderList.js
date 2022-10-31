@@ -18,3 +18,25 @@
 
 // Input: head = [1,2,3,4,5]
 // Output: [1,5,2,4,3]
+
+function reorderList(head) {
+    let newhead = head
+    let newArr = []
+    
+//     This is to put all the nodes into an array since we are not modifying the actual list's nodes
+    while(newhead){
+        newArr.push(newhead)
+        newhead = newhead.next
+    }
+    
+    for( let i = 0; i < newArr.length; i++){
+//         This accounts for L(n) then L(n-1) then L(n-2) because you get last element and subtract by i which will be 0 then 1 then 2
+        let r = newArr.length - 1 - i
+//      If i (or the left) is greater or equal to the right, stop as we have reached the middle of the list or are at the same index 
+        if(i >= r) { newArr[i].next = null; break; }
+        console.log("i and r", i, r)
+        newArr[i].next = newArr[r]
+        console.log(newArr[i].next)
+        newArr[r].next = newArr[i + 1]
+    }
+}
