@@ -15,3 +15,18 @@
 // Input: temperatures = [30,60,90]
 // Output: [1,1,0]
 
+var dailyTemperatures = function(temp) {
+    // Notes: Each index represents a day so we need to subtract current index from last index when we find a higher temp
+    let stack = [];
+    let result = new Array(temp.length).fill(0);
+// iterate through the array 
+    for(let i =0; i < result.length; i++){
+        // this is to check if conditions are true that will calculate the difference for how many days until hotter
+        while(stack.length && temp[i]> temp[stack[stack.length-1]]){
+            let x = stack.pop()
+            result[x] = i - x
+        }
+        stack.push(i)
+    }
+    return result
+};
