@@ -20,3 +20,24 @@
 
 // Input: root = [2,1], p = 2, q = 1
 // Output: 2
+
+var lowestCommonAncestor = function(root, p, q) {
+    // The logic behind this problem is to return the node that has a descendant with p and q 
+    // We need to traverse down tree and return current node which will be the lwoest common ancestor 
+    // this naturally happens by rules of BSTs so both p and q need to be either greater or less than the value to traverse down the tree otherwise the root satisfies conditions 
+// easiest way to check and not end up with a ton of conditionals is starting at curr and if both p and q are greater than we traverse and if they are not greater or lesser return curr as it is lowest common ancestor 
+
+    let curr = root
+
+    while(curr){
+        // If they are both bigger than traverse to see who is LCA
+        if(p.val > curr.val && q.val > curr.val){
+            curr = curr.right
+        } else if (p.val < curr.val && q.val < curr.val){
+            curr = curr.left
+        } else {
+            return curr
+        }
+    }
+
+};
