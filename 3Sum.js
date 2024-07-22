@@ -66,3 +66,41 @@ var threeSum = function(nums) {
 return result
     
 };
+
+var threeSum = function (nums) {
+    // pointer problem since you have to keep track of many different numbers to get a sum 
+    // initialize pointers 
+    // sort the array 
+    nums.sort((a, b) => a - b)
+
+    const indexArrays = []
+
+    for (let i = 0; i < nums.length - 2; i++) {
+        // skip duplicate
+        if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+        // also preventative of overlap
+        let left = i + 1;
+        let right = nums.length - 1;
+
+        while (left < right) {
+            const sum = nums[left] + nums[i] + nums[right]
+
+            if (sum === 0) {
+                indexArrays.push([nums[left], nums[i], nums[right]])
+
+                // Skip duplicates // study 
+                while (left < right && nums[left] === nums[left + 1]) left++;
+                while (left < right && nums[right] === nums[right - 1]) right--;
+                left++;
+                right--;
+            } else if (sum < 0) {
+                left++
+            } else {
+                right--
+            }
+        }
+
+    }
+    return indexArrays
+};

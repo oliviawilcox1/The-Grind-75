@@ -44,3 +44,24 @@ var isPalindrome = function(s) {
     }
     return false
 };
+
+
+var isPalindrome = function(s) {
+  // first strip and convert string to lower case
+
+const strippedString = s.replace(/[^a-z0-9]/gi, '').toLowerCase();
+  console.log(strippedString)
+  // since a plaindrome is the same in reverse - we want the ende and the beginning to match so use a two pointer approach
+  let left = 0
+  let right = strippedString.length -1
+
+  while (left < right ) {
+      if(strippedString[left] === strippedString[right]){     
+          left++
+          right--
+      } else {
+          return false
+      }
+  }
+  return true
+};
