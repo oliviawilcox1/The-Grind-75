@@ -84,3 +84,21 @@ var twoSum = (nums, target) => {
 
   return [ -1, -1 ];
 }
+
+var twoSum = function(nums, target) {
+  const map = {}
+  
+  for(let i=0; i< nums.length; i++) {
+      const number = nums[i]
+      const difference = target - nums[i]
+
+      console.log(i, difference)
+
+      if (map.hasOwnProperty(difference)) {
+
+          return [i, map[difference]]; // Return results immediately
+      } 
+          map[number] = i
+  }
+  return []
+};
