@@ -44,3 +44,31 @@ var generateParenthesis = function(n) {
     gen(0, 0, '');
     return current;
   };
+
+
+  var generateParenthesis = function(n) {
+    const result = []
+
+    const backtrack = (string, open, close) => {
+        // base case
+        if(string.length === n*2) {
+            result.push(string)
+            return
+        }
+
+        // logic to track remaining pairs
+        if(open < n) {
+            backtrack(string + '(', open +1, close)
+        }
+
+        if(close < open) {
+            backtrack(string + ')', open, close +1)
+        }
+
+
+    }
+
+    backtrack("", 0, 0)
+    return result 
+
+};

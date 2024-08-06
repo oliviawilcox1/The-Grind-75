@@ -42,11 +42,6 @@ var productExceptSelf = function(nums) {
 
 
 
-
-
-
-
-
 var productExceptSelf = (nums) => {
     const products = new Array(nums.length).fill(1);/* Ignore Auxillary Space O(N) */
 

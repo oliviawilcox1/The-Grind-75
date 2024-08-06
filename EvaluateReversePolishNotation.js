@@ -49,3 +49,42 @@ function evalRPN(tokens) {
       }
     return stack[0];
   }
+
+  var evalRPN = function(tokens) {
+    // my guess is its a stack and whenever you hit a evalution you pop things off the stack 
+    const stack = []
+
+    for(let i=0; i< tokens.length; i++) {
+        if(
+            tokens[i] === "+" ||
+            tokens[i] === "*" ||
+            tokens[i] === "-" ||
+             tokens[i] === "/"
+        ) {
+            const token = tokens[i]
+            const number2 = stack.pop()
+            const number1 = stack.pop()
+            let result;
+
+            switch(token){
+                case "+":
+                    result = number1 + number2
+                    break;
+                case "-":
+                    result = number1 - number2
+                    break;
+                case "*":
+                    result = number1 * number2
+                    break;
+                case "/":
+                    result = Math.trunc(number1/number2)
+                    break;
+            }
+            stack.push(result)
+
+        } else {
+            stack.push(Number(tokens[i]))
+        }
+    }
+    return stack[0]
+};
