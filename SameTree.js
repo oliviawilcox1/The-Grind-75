@@ -38,3 +38,24 @@ var isSameTree = function(p, q) {
         return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
         
     }
+
+
+    var isSameTree = function(p, q) {
+  
+
+        if( !p && !q) {
+            return true
+        }
+        // if one is null
+        if(!p || !q) {
+            return false
+        }
+    
+        if(p.val !== q.val) {
+            return false
+        }
+    
+    
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+        
+    };

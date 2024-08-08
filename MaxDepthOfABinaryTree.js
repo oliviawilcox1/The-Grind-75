@@ -48,3 +48,20 @@ var maxDepth = function(root) {
     return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     
 };
+
+var maxDepth = function(root) {
+    
+    if(!root) return 0
+
+    const findMax = (node, sum ) => {
+ 
+        if(!node) return 0
+
+        if(!node.left && !node.right) return 1
+        
+        return 1 + Math.max(findMax(node.left), findMax(node.right))
+
+    }
+
+    return findMax(root)
+};

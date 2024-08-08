@@ -78,3 +78,21 @@ const invertTree = (root) => {
         invert(root)
         return root
     }
+
+    var invertTree = function(root) {
+
+        const switchy = (node) => {
+            if(!node) return null 
+    
+            // swap
+            const temp = node.left
+            node.left = node.right
+            node.right = temp
+    
+            switchy(node.left)
+            switchy(node.right)
+            return node
+        }
+    
+        return switchy(root)
+    };

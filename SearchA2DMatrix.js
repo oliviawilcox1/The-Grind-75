@@ -88,3 +88,30 @@ function searchMatrix(matrix, target) {
         return null;
     }
 };
+
+var searchMatrix = function(matrix, target) {
+    const left = 0
+     const numCols = matrix[0].length;
+    const right = (matrix.length) * (numCols) -1 
+    
+
+   const searchMatrix = (left, right) => {
+        // base case 
+        if(left > right ) return false
+        // calc middle 
+        const middle = Math.floor((left + right)/ 2)
+        // CALCULATE the place in the matric
+        const row = Math.floor(middle / numCols)
+        const col = middle % numCols
+        const matrixVal = matrix[row][col]
+        if(matrixVal === target) return true 
+
+        if(target > matrixVal){
+            return searchMatrix(middle + 1, right)
+        } else {
+            return searchMatrix(left, middle -1)
+        }
+        
+   }
+   return searchMatrix(left, right)
+};
