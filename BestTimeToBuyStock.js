@@ -46,3 +46,23 @@ var maxProfit = function(prices) {
   }
   return result;
 };
+
+var maxProfit = function(prices) {
+  let min = prices[0]
+  let max = 0
+  let buyday = 0
+  let sellday = 0
+
+  for(let i = 1; i < prices.length; i++) {
+      // check if its greater 
+      if(prices[i] < min) {
+          min = prices[i]
+          buyday = i
+      } else if (prices[i] - min > max) {
+          max = prices[i] - min;
+          sellday = i;
+      }
+  }
+  return max
+  
+};

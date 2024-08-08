@@ -65,4 +65,34 @@ var minEatingSpeed = function(piles, h) {
         return ans;
     };
     
+    var minEatingSpeed = function(piles, h) {
+        let min = 1
+        let max = Math.max(...piles)
     
+        function eatAllBananas(k) {
+            let hours = 0
+            for(const pile of piles) {
+                // for each value of piles 
+                hours += Math.ceil(pile/k)
+            }
+            // return whether or not its true that she can eat them all 
+        //     console.log(
+        //         "\H", h, 
+        //     "\nhours:", hours, 
+        // "\nk:", k, 
+        // "\npiles:", piles)
+            return hours <= h
+        }
+    
+        while(min < max) {
+            const middle = Math.floor((min + max) /2)
+            // console.log(eatAllBananas(middle))
+            if(eatAllBananas(middle)){
+                //updat min
+                max = middle
+            } else {
+                min = middle + 1
+            }
+        }
+        return min
+    };
