@@ -30,8 +30,28 @@ var diameterOfBinaryTree = function(root) {
         let right = count(root.right)
 
         counter = Math.max(counter, left + right + 1)
-         console.log(counter)
         return Math.max(left, right) + 1
     }
     return counter - 1  
 };
+
+var diameterOfBinaryTree = function(root) {
+    let diameter = 0;
+ 
+     function height(node) {
+         if (node === null) return 0;
+ 
+         let leftHeight = height(node.left);
+         let rightHeight = height(node.right);
+ 
+         // Update the diameter at this node
+         diameter = Math.max(diameter, leftHeight + rightHeight);
+ 
+         // Return the height of this node
+         return Math.max(leftHeight, rightHeight) + 1;
+     }
+ 
+     height(root); // Start the recursion from the root
+ 
+     return diameter;
+ };

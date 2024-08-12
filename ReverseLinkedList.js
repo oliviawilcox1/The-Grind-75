@@ -93,3 +93,17 @@ var reverseList = function(head) {
 
     return arrToList(newArr)
 }
+
+var reverseList = function(head) {
+    let  prev = null
+    let current = head
+    let temp = null
+
+    while(current !== null) {
+        temp = current.next 
+        current.next = prev
+        prev = current 
+        current = temp 
+    }
+    return prev
+};

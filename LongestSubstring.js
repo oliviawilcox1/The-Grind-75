@@ -104,3 +104,27 @@ const lengthOfLongestSubstring = (s) => {
 
     return maxLen
 }
+
+var lengthOfLongestSubstring = function(s) {
+
+    let curString = ""
+    let max = 0
+    
+
+    for(let i = 0; i < s.length; i++) {
+        // console.log(s[i])
+        // console.log(max)
+        // check if the current string has 
+        if(curString.includes(s[i])){
+            const index = curString.indexOf(s[i])
+            curString = curString.slice(index + 1)
+        }
+
+        curString += s[i]
+        max = Math.max(max, curString.length)
+    }
+    console.log(max)
+    console.log(curString)
+
+    return max
+};

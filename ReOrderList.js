@@ -84,3 +84,44 @@ var reorderList = function(head) {
         console.log("h2", h2)
     }
 };
+
+
+var reorderList = function(head) {
+    if(!head || !head.next || !head.next.next) return 
+
+    // first get halfway point
+    let slow = head, fast = head
+    while(fast && fast.next) {
+        slow = slow.next
+        fast = fast.next.next
+    }
+
+    // now take halfway and reverse
+    let prev = null
+    let curr = slow.next
+    slow.next = null
+    while(curr) {
+        let temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = temp
+    }
+
+
+    // lastly merge 
+
+        let first = head, second = prev;
+    while (second) {
+        let temp1 = first.next;
+        let temp2 = second.next;
+
+        first.next = second;
+        second.next = temp1;
+
+        first = temp1;
+        second = temp2;
+    }
+
+    
+    
+};

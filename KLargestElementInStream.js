@@ -45,3 +45,32 @@ KthLargest.prototype.add = function(val) {
     if (!done)arr.splice(0,0,val)
     return arr[n-1]
 };
+
+
+var KthLargest = function(k, nums) {
+
+    this.k = k
+    this.heap = []
+
+    for(let num of nums){
+        this.add(num)
+    }
+
+};
+
+/** 
+* @param {number} val
+* @return {number}
+*/
+KthLargest.prototype.add = function(val) {
+// need our logic to sort everything
+if(this.heap.length < this.k){
+    this.heap.push(val)
+    this.heap.sort((a,b) => a - b)
+} else if (val > this.heap[0]){
+    console.log(val, this.heap)
+    this.heap[0] = val
+    this.heap.sort((a,b) => a - b)
+}
+return this.heap[0]
+};
