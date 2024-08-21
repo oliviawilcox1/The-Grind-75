@@ -24,3 +24,4 @@ var isSymmetric = function(root) {
     return checkSymmetry(root.left, root.right)
     
 };
+

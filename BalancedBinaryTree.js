@@ -40,3 +40,19 @@ var isBalanced = function(root) {
     dfs(root)
     return boolean
 }
+
+var isBalanced = function(root) {
+    
+    function height(node) {
+        if(!node) return 0
+
+       let leftheight =  height(node.left)
+       let rightheight =  height(node.right)
+
+        if(leftheight === -1 || rightheight === -1) return -1
+        if(Math.abs(leftheight - rightheight) > 1) return -1
+        return Math.max(leftheight, rightheight) + 1
+    }
+
+    return height(root) !== -1
+};
