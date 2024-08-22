@@ -43,3 +43,30 @@ var longestConsecutive = function(nums) {
     return max
     
 }
+
+var longestConsecutive = function(nums) {
+
+    if(nums.length === 0 ) return 0
+
+    const map = new Set(nums)
+    let maxLength = 0;
+    
+    for(let num of nums) {
+ 
+        if(!map.has(num - 1)) {
+            // start
+            let currentNum = num
+            let currentLength = 1
+
+            while(map.has(currentNum + 1)){
+                currentNum++
+                currentLength++
+            }
+
+            maxLength = Math.max(maxLength, currentLength)
+
+        }
+    }
+
+    return maxLength
+};
