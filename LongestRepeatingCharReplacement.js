@@ -74,3 +74,30 @@ var characterReplacement = function (s, k) {
     // Return the window size
     return right - left; 
   };
+
+  var characterReplacement = function(s, k) {
+    let res = 0;
+    let left = 0;
+    const map = {};
+
+    for (let right = 0; right < s.length; right++) {
+        // Add the current character to the frequency map
+        const char = s[right];
+        map[char] = (map[char] || 0) + 1;
+
+        // Calculate the window size and the most frequent character's count in the current window
+        const windowSize = right - left + 1;
+        const maxCount = Math.max(...Object.values(map));
+
+        // If the window is not valid (too many changes needed), shrink it
+        if (windowSize - maxCount > k) {
+            map[s[left]]--;
+            left++;
+        }
+
+        // Update the result with the size of the current valid window
+        res = Math.max(res, right - left + 1);
+    }
+
+    return res;
+};
