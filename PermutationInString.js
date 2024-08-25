@@ -53,3 +53,54 @@ var checkInclusion = function(s1, s2) {
 };
 
 
+
+
+
+var checkInclusion = function(s1, s2) {
+    const s1Map = {};
+    const s2Map = {};
+    const maxSize = s1.length;
+    let left = 0;
+
+    for (let char of s1) {
+        s1Map[char] = (s1Map[char] || 0) + 1;
+    }
+
+    for (let right = 0; right < s2.length; right++) {
+        const s2Char = s2[right];
+        s2Map[s2Char] = (s2Map[s2Char] || 0) + 1;
+
+
+        if (right - left + 1 === maxSize) {
+            if (areMapsEqual(s1Map, s2Map)) {
+                return true;
+            }
+
+            // check if it should be deleted
+            const charToRemove = s2[left];
+            if (s2Map[charToRemove] === 1) {
+                delete s2Map[charToRemove];
+            } else {
+                s2Map[charToRemove]--;
+            }
+            left++;
+        }
+    }
+
+    // Helper function to compare two maps
+    function areMapsEqual(map1, map2) {
+        const keys1 = Object.keys(map1);
+        const keys2 = Object.keys(map2);
+        if (keys1.length !== keys2.length) {
+            return false;
+        }
+        for (let key of keys1) {
+            if (map1[key] !== map2[key]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    return false;
+};

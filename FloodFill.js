@@ -51,3 +51,38 @@ var floodFill = function(image, sr, sc, color) {
     
     return image;
 };
+
+function floodFill(image, startRow, startCol, newColor) {
+    const originalColor = image[startRow][startCol];
+    
+    // If the starting pixel already has the new color, return the image as is
+    if (originalColor === newColor) return image;
+    
+    const directions = [
+        [1, 0],  // move down
+        [-1, 0], // move up
+        [0, 1],  // move right
+        [0, -1]  // move left
+    ];
+
+    // Recursive DFS function to fill connected components
+    function fill(row, col) {
+        // Check if the current pixel is out of bounds or not the original color
+        if (row < 0 || row >= image.length || col < 0 || col >= image[0].length || image[row][col] !== originalColor) {
+            return;
+        }
+
+        // Change the color of the current pixel
+        image[row][col] = newColor;
+
+        // Recursively apply flood fill to all 4-directionally connected pixels
+        for (let [rowOffset, colOffset] of directions) {
+            fill(row + rowOffset, col + colOffset);
+        }
+    }
+
+    // Start the flood fill process from the starting pixel
+    fill(startRow, startCol);
+
+    return image;
+}
