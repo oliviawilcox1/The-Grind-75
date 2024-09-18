@@ -51,3 +51,40 @@ var isSubtree = function(root, subRoot) {
     }
 };
     
+
+var isSubtree = function(root, subRoot) {
+    function helperFunc (tree, subtree) {
+        // Base cases
+        if(tree === null && subtree === null) {
+            return true;
+        }
+
+        if(tree === null || subtree === null) {
+            return false;
+        }
+
+        if(tree.val !== subtree.val) {
+            return false;
+        }
+
+        // Recursively check the left and right subtrees
+        return helperFunc(tree.left, subtree.left) && helperFunc(tree.right, subtree.right);
+    }
+
+    function check(tree, subtree) {
+        if(tree === null) {
+            return false;  // No subtree can exist in a null tree
+        }
+
+        // If the current node matches the subtree root, check structure
+        if(tree.val === subtree.val && helperFunc(tree, subtree)) {
+            return true;
+        }
+
+        // Continue checking the left and right subtrees
+        return check(tree.left, subtree) || check(tree.right, subtree);
+    }
+
+    // Return the result of the check
+    return check(root, subRoot);
+};
